@@ -1,0 +1,20 @@
+# Зависимости
+node_modules/
+
+# Секреты и локальные настройки
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Отчёты Playwright
+playwright-report/
+test-results/
+
+# Кэш и временные файлы
+.nyc_output/
+coverage/
+*.log
+.DS_Store
+Thumbs.db
