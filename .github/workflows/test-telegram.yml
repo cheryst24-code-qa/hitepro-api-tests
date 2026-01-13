@@ -1,0 +1,41 @@
+# .github/workflows/test-telegram.yml
+name: Test Telegram Notification
+
+on:
+  workflow_dispatch:  # позволяет запустить вручную из GitHub UI
+
+jobs:
+  notify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send test message to Telegram
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          GITHUB_REPO: ${{ github.repository }}
+          GITHUB_RUN_ID: ${{ github.run_id }}
+        run: |
+          if [ -z "$TELEGRAM_BOT_TOKEN" ] || [ -z "$TELEGRAM_CHAT_ID" ]; then
+            echo "❌ Ошибка: не заданы секреты TELEGRAM_BOT_TOKEN или TELEGRAM_CHAT_ID"
+            exit 1
+          fi
+
+          RUN_URL="https://github.com/$GITHUB_REPO/actions/runs/$GITHUB_RUN_ID"
+          MESSAGE="🧪 Тестовое сообщение от GitHub Actions!\nРепозиторий: $GITHUB_REPO\nЗапуск: $RUN_URL"
+
+          echo "Отправка сообщения в Telegram..."
+          response=$(curl -s -X POST \
+            "https://api.telegram.org/bot$TELEGRAM_BOT_TOKEN/sendMessage" \
+            -d "chat_id=$TELEGRAM_CHAT_ID" \
+            -d "text=$MESSAGE" \
+            -d "parse_mode=HTML")
+
+          echo "Ответ от Telegram:"
+          echo "$response"
+
+          if echo "$response" | grep -q '"ok":true'; then
+            echo "✅ Уведомление успешно отправлено!"
+          else
+            echo "❌ Ошибка при отправке!"
+            exit 1
+          fi
