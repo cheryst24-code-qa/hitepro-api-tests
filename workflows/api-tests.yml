@@ -1,1 +1,43 @@
+# .github/workflows/api-tests.yml
+name: HiTE PRO API Tests
 
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Клонировать репозиторий
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Установить Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      # 3. Установить зависимости
+      - name: Install dependencies
+        run: npm ci
+
+      # 4. Запустить Playwright-тесты
+      - name: Run API tests
+        run: npx playwright test
+        env:
+          HITEPRO_BASE_URL: ${{ secrets.HITEPRO_BASE_URL }}
+          HITEPRO_USER: ${{ secrets.HITEPRO_USER }}
+          HITEPRO_PASS: ${{ secrets.HITEPRO_PASS }}
+
+      # 5. Сохранить HTML-отчёт как артефакт
+      - name: Upload report
+        if: always()  # сохранять даже при падении тестов
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
