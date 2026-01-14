@@ -3,8 +3,8 @@ name: HiTE PRO API Tests
 on:
   push:
     branches: [ main ]
-  # schedule:
-  #  - cron: '0 * * * *'
+    schedule:
+    - cron: '08 * * * *'
 
 jobs:
   test:
