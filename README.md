@@ -102,8 +102,9 @@ playwright.config.js
 
 ## 2. Локальное окружение
 .env содержит:
-HITEPRO_BASE_URL=https://ваш_ключ.connect-profi.ru/rest/
-HITEPRO_USER=admin
+
+HITEPRO_BASE_URL=https://ваш_ключ.connect-profi.ru/rest/  
+HITEPRO_USER=admin  
 HITEPRO_PASS=пароль
 
 - .env в .gitignore
@@ -111,9 +112,10 @@ HITEPRO_PASS=пароль
 
 ## 3. Git и GitHub
 .gitignore содержит:
-node_modules/
-.env
-playwright-report/
+
+node_modules/  
+.env  
+playwright-report/  
 test-results/
 
 - .env.example без паролей

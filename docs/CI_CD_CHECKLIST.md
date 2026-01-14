@@ -8,46 +8,47 @@
 🔹 1. Подготовка проекта
 
 - Проект инициализирован (`npm init -y`)
-- Установлены зависимости:
+- Установлены зависимости:  
   npm install @playwright/test dotenv --save-dev
 
 Структура папок соответствует:
-tests/devices.spec.js
-.env.example
-playwright.config.js
+
+tests/devices.spec.js  
+.env.example  
+playwright.config.js  
 package.json 
 
 🔹 2. Настройка локального окружения
-- Создан файл .env с реальными данными:
-HITEPRO_BASE_URL=https://ваш_ключ.connect-profi.ru/rest/
-HITEPRO_USER=admin
-HITEPRO_PASS=ваш_пароль
+- Создан файл .env с реальными данными:  
+HITEPRO_BASE_URL=https://ваш_ключ.connect-profi.ru/rest/  
+HITEPRO_USER=admin  
+HITEPRO_PASS=ваш_пароль  
 
 - Файл .env добавлен в .gitignore
-- Тесты успешно запускаются локально:
-npx playwright test
-npx playwright show-report
+- Тесты успешно запускаются локально:  
+npx playwright test  
+npx playwright show-report  
 
 🔹3. Подготовка к работе с Git
--Создан .gitignore со следующим содержимым:
-node_modules/
-.env
-playwright-report/
-test-results/
+- Создан .gitignore со следующим содержимым:  
+node_modules/  
+.env  
+playwright-report/  
+test-results/  
 - Создан README.md с инструкцией по установке и запуску
 - Создан .env.example (без паролей!)
-- Проект закоммичен локально:
-git add .
-git commit -m "feat: initial Playwright API tests"
+- Проект закоммичен локально:  
+git add .  
+git commit -m "feat: initial Playwright API tests"  
 
 🔹4. Создание репозитория на GitHub
 - Репозиторий создан (например, hitepro-api-tests)
-- Выполнена первая отправка кода:
-git remote add origin https://github.com/cheryst24-code-qa/hitepro-api-tests.git
-git branch -M main
-git push -u origin main
+- Выполнена первая отправка кода:  
+git remote add origin https://github.com/cheryst24-code-qa/hitepro-api-tests.git  
+git branch -M main  
+git push -u origin main  
 
-⚠️ Если возник конфликт — выполнен git pull --rebase перед пушем.
+⚠️ Если возник конфликт - выполнен git pull --rebase перед пушем.
 
 🔹5. Настройка секретов в GitHub
 Перейти: Settings → Secrets and variables → Actions
