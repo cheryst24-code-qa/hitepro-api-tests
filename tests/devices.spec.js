@@ -200,7 +200,7 @@ test('drive: can open (command=2)', async ({ request }) => {
   test.expect(data).toHaveProperty('result', 'Command send');
 });
 
-// === ЦВЕТНЫЕ УСТРОЙСТВА ===
+// === RGBW УСТРОЙСТВА ===
 
 test('RGBW / LED3S/M: can set color', async ({ request }) => {
   // Ищем любое цветное устройство
