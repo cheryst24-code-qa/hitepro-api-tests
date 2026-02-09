@@ -2,7 +2,7 @@
 
 Тесты REST API шлюза умного дома **HiTE PRO Gateway** на основе официальной спецификации [Спецификация API](https://cloud.mail.ru/public/k9he/nzDhMmiD6).
 
-# 1. Ручное тестирование в Postman с автоматизацией на уровне запроса
+## Ручное тестирование в Postman с автоматизацией на уровне запроса
 
 ## Описание Hite Pro Gateway API (Auto-ID)
 
