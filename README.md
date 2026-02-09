@@ -160,7 +160,15 @@ test-results/
 
 🔹 7. Уведомления и отчёт
 - При падении тестов - сообщение в Telegram с ссылкой на запуск
+| При падении тестов - сообщение в Telegram |
+|-------------|
+| ![0](/docs/screenshots/tg_report.png) |
+
 - HTML-отчёт доступен как артефакт
+| HTML-отчёт |
+|-------------|
+| ![0](/docs/screenshots/html_report.png) |
+
 - Все шаги проходят успешно в GitHub Actions
 
 - [📋 Полный чек-лист настройки CI/CD](docs/CI_CD_CHECKLIST.md)
