@@ -1,10 +1,37 @@
-# 🏠 HiTE PRO Gateway - API тесты
+## 🏠 HiTE PRO Gateway - API тесты
 
-Автоматизированные тесты REST API шлюза умного дома **HiTE PRO Gateway** на основе официальной спецификации [Спецификация API](https://cloud.mail.ru/public/k9he/nzDhMmiD6).
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+
+Автоматизированные тесты REST API шлюза умного дома **HiTE PRO Gateway** на основе официальной спецификации
+([копия в репозитории](./API_HITE_PRO.pdf)).
+
+---
+## 📚 Содержание
+
+- [🏠 Описание](#-описание)
+- [🔌 Поддерживаемые типы устройств](#-поддерживаемые-типы-устройств)
+- [📡 Ресурсы API](#-ресурсы-api)
+- [🧪 Покрытие тестами](#-покрытие-тестами)
+- [🚀 Установка и запуск](#-установка-и-запуск)
+- [🔐 Настройка CI/CD и секретов](#-настройка-cicd-и-секретов)
+- [📊 Отчёты и уведомления](#-отчёты-и-уведомления)
+- [📁 Структура проекта](#-структура-проекта)
 
 ---
 
-## 1.🔌 Поддерживаемые типы устройств
+## 🏠 Описание
+
+Тесты написаны на **JavaScript** с использованием фреймворка **Playwright** в режиме API-only.  
+Они проверяют:
+- Получение списка устройств и сценариев.
+- Чтение состояния устройств (согласно типам).
+- Управление устройствами (реле, диммеры, приводы, RGBW).
+- Обработку ошибок (401, 404, 405).
+- Отправку логов и webhook'ов (для `transmitter`).
+
+---
+
+## 🔌 Поддерживаемые типы устройств
 
 ### Управляемые устройства
 
@@ -37,7 +64,6 @@
 | `transmitter` | **Не возвращает `status`** | Состояние только через **webhook** |
 
 ---
-
 ## 📡 Ресурсы API
 
 - Базовый URI:
@@ -62,115 +88,68 @@
   - `405` – Method Not Allowed (например, PUT на датчик)
 
 ---
+## 📑 Покрытие тестами
 
-## 🧪 Основные сценарии
+### Позитивные сценарии
 
-- Получение списка устройств и сценариев
-- Чтение состояния всех типов датчиков
-- Управление реле, диммерами, приводами
-- Управление цветом, цветовой температурой и эффектами RGBW
-- Проверка обработки ошибок (`401`, `404`, `405`)
-- Чтение логов устройств и сценариев
+- ✅ Получение списка устройств и сценариев
+- ✅ Чтение состояния всех типов датчиков
+- ✅ Управление реле, диммерами, приводами
+- ✅ Управление цветом, цветовой температурой и эффектами RGBW
+- ✅ Чтение логов устройств и сценариев
+
+### Негативные сценарии
+
+- ✅ Обработка ошибок авторизации (`401`)
+- ✅ Обработка несуществующих ID (`404`)
+- ✅ Обработка попыток отправки команд на датчики (`405`)
+- ✅ Валидация значений команд (например, `150` для диммера)
 
 ---
-
 ## 🚀 Установка и запуск
-
 ```bash
-git clone https://github.com/cheryst24-code-qa/hitepro-api-tests.git
-cd hitepro-api-tests
-npm install
-cp .env.example .env  # ← укажите HITEPRO_BASE_URL, USER, PASS
-npm test
-npx playwright show-report
-
+    git clone https://github.com/cheryst24-code-qa/hitepro-api-tests.git
+    cd hitepro-api-tests
+    npm install
+    cp .env.example .env  # ← укажите HITEPRO_BASE_URL, USER, PASS
+    npm test
+    npx playwright show-report
 ```
-🤖 CI/CD
-- GitHub Actions: запуск при push и по расписанию (0 * * * *)
-- Telegram-уведомления о статусе
-- HTML-отчёт как артефакт
-Настройка: добавьте секреты в GitHub.
+🔐 Настройка CI/CD и секретов
+    GitHub Actions
+    Запуск при push и по расписанию (0 * * * *)
+    HTML-отчёт как артефакт
+    Уведомления в Telegram при падении тестов
+    Секреты
+    Добавьте в Settings → Secrets and variables → Actions:
+    HITEPRO_BASE_URL – базовый URL API
+    HITEPRO_USER – имя пользователя
+    HITEPRO_PASS – пароль
+    TELEGRAM_BOT_TOKEN – токен бота
+    TELEGRAM_CHAT_ID – ID чата
 
-🔒 Безопасность
-- .env исключён из Git
-- Секреты — только через GitHub Secrets
----
-- Структура:
-tests/devices.spec.js
-.env.example
-playwright.config.js
+📊 Отчёты и уведомления
+    HTML-отчёты Playwright доступны как артефакт GitHub Actions.
+    При падении тестов — уведомление в Telegram с результатом и ссылкой на запуск.
+| Telegram-уведомление | HTML-отчёт |
+|----------------------|------------|
+| ![Telegram Report](./docs/screenshots/tg_report.png) | ![HTML Report](./docs/screenshots/html_report.png) |
 
-## 2. Локальное окружение
-.env содержит:
+📁 Структура проекта
+├── tests/
+│   └── devices.spec.js       # Основные API-тесты
+├── docs/
+│   ├── specification.md      # Копия спецификации API
+│   ├── screenshots/
+│   │   ├── tg_report.png
+│   │   └── html_report.png
+│   └── CI_CD_CHECKLIST.md    # Чек-лист настройки CI/CD
+├── .env.example              # Шаблон переменных окружения
+├── .gitignore                # Файлы, исключённые из Git
+├── playwright.config.js      # Конфигурация Playwright
+└── package.json              # Зависимости проекта
 
-HITEPRO_BASE_URL=https://ваш_ключ.connect-profi.ru/rest/  
-HITEPRO_USER=admin  
-HITEPRO_PASS=пароль
-
-- .env в .gitignore
-- Тесты запускаются: npx playwright test
-
-## 3. Git и GitHub
-.gitignore содержит:
-
-node_modules/  
-.env  
-playwright-report/  
-test-results/
-
-- .env.example без паролей
-- Репозиторий создан и код запущен
-
-## 4. Секреты GitHub
-Добавлены в Settings → Secrets and variables → Actions:
-- HITEPRO_BASE_URL
-- HITEPRO_USER
-- HITEPRO_PASS
-- TELEGRAM_BOT_TOKEN
-- TELEGRAM_CHAT_ID
-
-## 5. Workflow
-Файл: .github/workflows/api-tests.yml
-
-Проверки:
-- Триггеры: push + schedule: '0 * * * *'
-- Корректный URL без пробелов
-- Используется "${{ steps.run_tests.outcome }}"
-- Шаг отправки в Telegram с parse_mode=HTML
-- Артефакт: playwright-report
-
-## 6. Покрытие по спецификации
-Тесты проверяют:
-- switch: status: bool, команды 1/2/3
-- dimmer: 0–100, команда 101
-- drive: статус 0–3, команды 2/3/4
-- LED3S/M: color через query-параметр
-- RGBW:
-    - color (HEX),
-    - colorTemperature при управлении: 1500–6500,
-    - effect: 0–9
-- Датчики:
-    - motion → bool,
-    - temperature → float (-40…+50),
-    - checker/water/power → 0/1,
-    - illumination/humidity → 0–100
-- transmitter → не возвращает status (проверка 404)
-- Логи: /logs/device/, /logs/scenario/
-- Ошибки: 401, 404, 405
-
-🔹 7. Уведомления и отчёт
-- При падении тестов - сообщение в Telegram с ссылкой на запуск
-
-| При падении тестов - сообщение в Telegram |
-|-------------|
-| ![tg_report](/docs/screenshots/tg_report.png) |
-
-- HTML-отчёт доступен как артефакт
-
-| HTML-отчёт |
-|-------------|
-| ![html_report](/docs/screenshots/html_report.png) |
-
-- Все шаги проходят успешно в GitHub Actions
-
-- [📋 Полный чек-лист настройки CI/CD](docs/CI_CD_CHECKLIST.md)
+🛡️ Безопасность
+    .env находится в .gitignore
+    Секреты передаются через GitHub Secrets
+    .env.example не содержит чувствительных данных
