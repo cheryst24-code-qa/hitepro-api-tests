@@ -11,7 +11,7 @@
 - [🏠 Описание](#-описание)
 - [🔌 Поддерживаемые типы устройств](#-поддерживаемые-типы-устройств)
 - [📡 Ресурсы API](#-ресурсы-api)
-- [🧪 Покрытие тестами](#-покрытие-тестами)
+- [📑 Покрытие тестами](#-покрытие-тестами)
 - [🚀 Установка и запуск](#-установка-и-запуск)
 - [🔐 Настройка CI/CD и секретов](#-настройка-cicd-и-секретов)
 - [📊 Отчёты и уведомления](#-отчёты-и-уведомления)
@@ -136,19 +136,18 @@
 | ![Telegram Report](./docs/screenshots/tg_report.png) | ![HTML Report](./docs/screenshots/html_report.png) |
 
 ## 📁 Структура проекта
-
-  ├── tests/
-  │   └── devices.spec.js       # Основные API-тесты
-  ├── docs/
-  │   ├── specification.md      # Копия спецификации API
-  │   ├── screenshots/
-  │   │   ├── tg_report.png
-  │   │   └── html_report.png
-  │   └── CI_CD_CHECKLIST.md    # Чек-лист настройки CI/CD
-  ├── .env.example              # Шаблон переменных окружения
-  ├── .gitignore                # Файлы, исключённые из Git
-  ├── playwright.config.js      # Конфигурация Playwright
-  └── package.json              # Зависимости проекта
+    ├── tests/
+    │   └── devices.spec.js       # Основные API-тесты
+    ├── docs/
+    │   ├── specification.md      # Копия спецификации API
+    │   ├── screenshots/
+    │   │   ├── tg_report.png
+    │   │   └── html_report.png
+    │   └── CI_CD_CHECKLIST.md    # Чек-лист настройки CI/CD
+    ├── .env.example              # Шаблон переменных окружения
+    ├── .gitignore                # Файлы, исключённые из Git
+    ├── playwright.config.js      # Конфигурация Playwright
+    └── package.json              # Зависимости проекта
 
 ## 🛡️ Безопасность
     .env находится в .gitignore
