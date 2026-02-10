@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
 Автоматизированные тесты REST API шлюза умного дома **HiTE PRO Gateway** на основе официальной спецификации
-([копия в репозитории](./docs/API_HITE_PRO.pdfAPI_HITE_PRO.pdf)).
+([копия в репозитории](./docs/API_HITE_PRO.pdf)).
 
 ---
 ## 📚 Содержание
