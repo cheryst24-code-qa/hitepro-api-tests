@@ -16,7 +16,7 @@
 - [🔐 Настройка CI/CD и секретов](#-настройка-cicd-и-секретов)
 - [📊 Отчёты и уведомления](#-отчёты-и-уведомления)
 - [📁 Структура проекта](#-структура-проекта)
-
+- [🛡️ Безопасность](#-безопасность)
 ---
 
 ## 🏠 Описание
@@ -115,7 +115,7 @@
     npm test
     npx playwright show-report
 ```
-🔐 Настройка CI/CD и секретов
+## 🔐 Настройка CI/CD и секретов
     GitHub Actions
     Запуск при push и по расписанию (0 * * * *)
     HTML-отчёт как артефакт
@@ -128,28 +128,29 @@
     TELEGRAM_BOT_TOKEN – токен бота
     TELEGRAM_CHAT_ID – ID чата
 
-📊 Отчёты и уведомления
+## 📊 Отчёты и уведомления
     HTML-отчёты Playwright доступны как артефакт GitHub Actions.
     При падении тестов — уведомление в Telegram с результатом и ссылкой на запуск.
 | Telegram-уведомление | HTML-отчёт |
 |----------------------|------------|
 | ![Telegram Report](./docs/screenshots/tg_report.png) | ![HTML Report](./docs/screenshots/html_report.png) |
 
-📁 Структура проекта
-├── tests/
-│   └── devices.spec.js       # Основные API-тесты
-├── docs/
-│   ├── specification.md      # Копия спецификации API
-│   ├── screenshots/
-│   │   ├── tg_report.png
-│   │   └── html_report.png
-│   └── CI_CD_CHECKLIST.md    # Чек-лист настройки CI/CD
-├── .env.example              # Шаблон переменных окружения
-├── .gitignore                # Файлы, исключённые из Git
-├── playwright.config.js      # Конфигурация Playwright
-└── package.json              # Зависимости проекта
+## 📁 Структура проекта
 
-🛡️ Безопасность
+  ├── tests/
+  │   └── devices.spec.js       # Основные API-тесты
+  ├── docs/
+  │   ├── specification.md      # Копия спецификации API
+  │   ├── screenshots/
+  │   │   ├── tg_report.png
+  │   │   └── html_report.png
+  │   └── CI_CD_CHECKLIST.md    # Чек-лист настройки CI/CD
+  ├── .env.example              # Шаблон переменных окружения
+  ├── .gitignore                # Файлы, исключённые из Git
+  ├── playwright.config.js      # Конфигурация Playwright
+  └── package.json              # Зависимости проекта
+
+## 🛡️ Безопасность
     .env находится в .gitignore
     Секреты передаются через GitHub Secrets
     .env.example не содержит чувствительных данных
