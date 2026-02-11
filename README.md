@@ -7,7 +7,7 @@
 
 > 💡 Также доступна [Postman Collection](https://github.com/cheryst24-code-qa/hite-pro-test-postman) для быстрой ручной проверки.
 
-## [Покрытие API HiTE PRO Gateway](./TEST_COVERAGE.md).
+#### [Покрытие API HiTE PRO Gateway](./TEST_COVERAGE.md).
 
 ## 📚 Содержание
 
@@ -163,7 +163,7 @@
     ├── playwright.config.js      # Конфигурация Playwright
     └── package.json              # Зависимости проекта
 
-## Безопасность
+## 🛡️ Безопасность
 
     .env находится в .gitignore
     Секреты передаются через GitHub Secrets
