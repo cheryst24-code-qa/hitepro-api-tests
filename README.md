@@ -163,7 +163,7 @@
     ├── playwright.config.js      # Конфигурация Playwright
     └── package.json              # Зависимости проекта
 
-## 🛡️ Безопасность
+## Безопасность
 
     .env находится в .gitignore
     Секреты передаются через GitHub Secrets
