@@ -1,6 +1,6 @@
 # 📊 Покрытие API HiTE PRO Gateway
 
-На основе [`api.pdf`](docs/api.pdf).  
+На основе [`API_HITE_PRO.pdf`](./docs/API_HITE_PRO.pdf).  
 Статус: ✅ = реализовано, ⚠️ = частично, ❌ = не реализовано
 
 | Тип | Сценарий | Playwright | Postman | Примечание |
