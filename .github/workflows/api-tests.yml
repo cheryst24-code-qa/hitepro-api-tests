@@ -55,7 +55,7 @@ jobs:
             MESSAGE="✅ [Playwright] Тесты HiTE PRO прошли успешно ($TRIGGER)!"
           else
             RUN_URL="https://github.com/${GITHUB_REPO}/actions/runs/${GITHUB_RUN_ID}"
-            MESSAGE="❌ Тесты HiTE PRO упали ($TRIGGER)!\Подробности: $RUN_URL"
+            MESSAGE="❌ [Playwright] Тесты HiTE PRO упали ($TRIGGER)!\Подробности: $RUN_URL"
           fi
 
           curl -s -X POST \
