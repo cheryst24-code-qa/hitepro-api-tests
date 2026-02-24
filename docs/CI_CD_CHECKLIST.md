@@ -54,13 +54,13 @@ git push -u origin main
 Перейти: Settings → Secrets and variables → Actions
 
 Добавить Repository secrets:
-| Название                | Значение                                   |                
-|-------------------------|--------------------------------------------|
-| HITEPRO_BASE_URL        | https://ваш_ключ.connect-profi.ru/rest/    |
-| HITEPRO_USER            | admin                                      |
-| HITEPRO_PASS            | ваш пароль                                 |
-| TELEGRAM_BOT_TOKEN      | токен от @BotFather                        |
-| TELEGRAM_CHAT_ID        | ваш chat_id                                | 
+| Название | Значение |                
+|----------|----------|
+| HITEPRO_BASE_URL | https://ваш_ключ.connect-profi.ru/rest/ |
+| HITEPRO_USER | admin |
+| HITEPRO_PASS | ваш пароль |
+| TELEGRAM_BOT_TOKEN | токен от @BotFatherи|
+| TELEGRAM_CHAT_ID | ваш chat_id | 
 
 🔹 6. Создание workflow-файла
 - Создан файл .github/workflows/api-tests.yml
