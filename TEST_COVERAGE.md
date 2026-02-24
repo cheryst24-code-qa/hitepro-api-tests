@@ -1,6 +1,7 @@
-# 📊 Покрытие API HiTE PRO Gateway
+📊 Покрытие API HiTE PRO Gateway
 
-На основе [`API_HITE_PRO.pdf`](./docs/API_HITE_PRO.pdf).  
+На основе [`API_HITE_PRO.pdf`](./docs/API_HITE_PRO.pdf). 
+
 Статус: ✅ = реализовано, ⚠️ = частично, ❌ = не реализовано
 
 | Тип | Сценарий | Playwright | Postman | Примечание |
@@ -19,6 +20,6 @@
 | `checker` / `water` / `power` | `0/1` | ✅ | ✅ | |
 | `transmitter` | Проверка `404` | ✅ | ✅ | |
 | Логи | `/logs/device/` | ✅ | ⚠️ | Только в Playwright |
-| Webhook | Имитация внешнего сервера | ❌ | ❌ | Требует ngrok |
+
 
 > Обновляйте этот файл при добавлении новых тестов.
